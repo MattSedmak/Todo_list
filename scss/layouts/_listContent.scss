@@ -1,0 +1,53 @@
+@import "../utilities/variables";
+.list-container {
+  font-family: "Courier New", Courier, monospace;
+
+  .list-group {
+    padding: $gutter-md;
+
+    .list-group-item {
+      display: flex;
+      align-items: center;
+      padding: $gutter-md $gutter-lg;
+      color: $main-font-color;
+      font-size: $list-font-size;
+
+      .delete {
+        position: absolute;
+        right: 0;
+        margin: $gutter-sm;
+        font-size: 1em;
+        color: lightgray;
+        border: none;
+        background-color: white;
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          color: rgb(255, 85, 85);
+          transition: color 0.4s ease;
+        }
+      }
+
+      .checkBox {
+        position: absolute;
+        left: 0;
+        margin: $gutter-sm;
+        width: 1rem;
+        height: 1rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .itemIsChecked {
+      color: lightgray;
+      background-color: $completed-bg-color;
+      transition: all 0.4s ease;
+      .delete {
+        color: #111;
+        background-color: $completed-bg-color;
+        transition: all 0.4s ease;
+      }
+    }
+  }
+}
