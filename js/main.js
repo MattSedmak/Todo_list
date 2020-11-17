@@ -69,6 +69,7 @@ function render() {
     let remove = document.createElement("button");
     remove.classList.add("delete");
     remove.setAttribute("type", "button");
+    remove.setAttribute("aria-label", "Delete button");
     remove.innerHTML = '<i class="far fa-trash-alt"></i>';
     if (todos[i].isDeleted == true) {
       li.classList.add("hideItem");
