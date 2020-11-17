@@ -43,6 +43,8 @@
         height: 1rem; }
         .list-container .list-group .list-group-item .checkBox:hover {
           cursor: pointer; }
+    .list-container .list-group .hideItem {
+      display: none; }
     .list-container .list-group .itemIsChecked {
       color: lightgray;
       background-color: #f9f9f9;

@@ -3,6 +3,7 @@ class Todo {
   constructor(name) {
     this.name = name;
     this.isCompleted = false;
+    this.isDeleted = false;
   }
 }
 
@@ -17,18 +18,16 @@ window.onload = () => {
   });
   document.getElementById("sortBtn").addEventListener("click", sortTodo);
 
-  let clean = new Todo("Clean house");
+  let clean = new Todo("Clean the house");
   let wash = new Todo("Wash the car");
 
   todos.push(clean);
   todos.push(wash);
 
-  //getFromLS();
   render();
 };
-// Add new todos to the array.
+// Add new todos.
 function addTodo() {
-  // user input
   let toDoInput = document.getElementById("toDoInput");
   let todo = new Todo(toDoInput.value);
   if (toDoInput.value == "") {
@@ -38,11 +37,10 @@ function addTodo() {
     toDoInput.value = "";
     errorMsg.innerHTML = "";
     render();
-    saveToLS();
   }
   toDoInput.focus();
 }
-// render todos that are in the array.
+// render todos as HTML.
 function render() {
   let ul = document.getElementById("ul");
   ul.innerHTML = "";
@@ -71,12 +69,16 @@ function render() {
     remove.classList.add("delete");
     remove.setAttribute("type", "button");
     remove.innerHTML = '<i class="far fa-trash-alt"></i>';
+    if (todos[i].isDeleted == true) {
+      li.classList.add("hideItem");
+    }
     remove.addEventListener("click", () => {
       removeTodo(todos[i].name);
       li.remove();
     });
     li.appendChild(remove);
   }
+  console.log(todos);
 }
 
 // toggle checked
@@ -86,35 +88,27 @@ function toggleCheckbox(name) {
       todos[i].isCompleted = !todos[i].isCompleted;
     }
   }
-  saveToLS();
 }
-
-//Remove todo
+// Remove todo
 function removeTodo(name) {
-  let ul = document.getElementById("ul");
   for (let i = 0; i < todos.length; i++) {
     if (name == todos[i].name) {
-      todos.splice(i, 1);
-      ul.innerHTML = "";
-      render();
+      todos[i].isDeleted = !todos[i].isDeleted;
     }
   }
-  saveToLS();
 }
-
-function saveToLS() {
-  localStorage.setItem("todoItem", JSON.stringify(todos));
-}
-function getFromLS() {
-  let todoItemfromLS = localStorage.getItem("todoItem");
-  todos = JSON.parse(todoItemfromLS);
-  if (todoItemfromLS == null) {
-    console.log("listan är tom");
-    errorMessage();
-  } else {
-    render();
-  }
-}
+//Remove todo
+// function removeTodo(name) {
+//   let ul = document.getElementById("ul");
+//   for (let i = 0; i < todos.length; i++) {
+//     if (name == todos[i].name) {
+//       todos.splice(i, 1);
+//       ul.innerHTML = "";
+//       render();
+//     }
+//   }
+//   saveToLS();
+// }
 
 function errorMessage() {
   let errorMsg = document.getElementById("errorMsg");

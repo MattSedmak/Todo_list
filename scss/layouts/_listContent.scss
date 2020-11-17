@@ -39,6 +39,10 @@
         }
       }
     }
+    .hideItem {
+      display: none;
+    }
+
     .itemIsChecked {
       color: lightgray;
       background-color: $completed-bg-color;
