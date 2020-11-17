@@ -45,6 +45,7 @@ function render() {
   let ul = document.getElementById("ul");
   ul.innerHTML = "";
   for (let i = 0; i < todos.length; i++) {
+    // Create li element
     let li = document.createElement("li");
     li.classList.add("list-group-item");
     li.innerHTML = todos[i].name;
@@ -64,7 +65,7 @@ function render() {
     });
     li.appendChild(checkBox);
 
-    //Create remove btn
+    //Create remove button
     let remove = document.createElement("button");
     remove.classList.add("delete");
     remove.setAttribute("type", "button");
@@ -81,34 +82,24 @@ function render() {
   console.log(todos);
 }
 
-// toggle checked
+// Checkbox toggle
 function toggleCheckbox(name) {
-  for (let i = 0; i < todos.length; i++) {
-    if (name == todos[i].name) {
-      todos[i].isCompleted = !todos[i].isCompleted;
-    }
-  }
+  let todo = todoWithName(name);
+  todo.isCompleted = !todo.isCompleted;
 }
 // Remove todo
 function removeTodo(name) {
+  let todo = todoWithName(name);
+  todo.isDeleted = !todo.isDeleted;
+}
+// Todo name loop
+function todoWithName(name) {
   for (let i = 0; i < todos.length; i++) {
     if (name == todos[i].name) {
-      todos[i].isDeleted = !todos[i].isDeleted;
+      return todos[i];
     }
   }
 }
-//Remove todo
-// function removeTodo(name) {
-//   let ul = document.getElementById("ul");
-//   for (let i = 0; i < todos.length; i++) {
-//     if (name == todos[i].name) {
-//       todos.splice(i, 1);
-//       ul.innerHTML = "";
-//       render();
-//     }
-//   }
-//   saveToLS();
-// }
 
 function errorMessage() {
   let errorMsg = document.getElementById("errorMsg");
