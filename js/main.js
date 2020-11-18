@@ -3,7 +3,6 @@ class Todo {
   constructor(name) {
     this.name = name;
     this.isCompleted = false;
-    this.isDeleted = false;
   }
 }
 
@@ -71,16 +70,12 @@ function render() {
     remove.setAttribute("type", "button");
     remove.setAttribute("aria-label", "Delete button");
     remove.innerHTML = '<i class="far fa-trash-alt"></i>';
-    if (todos[i].isDeleted == true) {
-      li.classList.add("hideItem");
-    }
     remove.addEventListener("click", () => {
       removeTodo(todos[i].name);
       li.remove();
     });
     li.appendChild(remove);
   }
-  console.log(todos);
 }
 
 // Checkbox toggle
@@ -90,8 +85,12 @@ function toggleCheckbox(name) {
 }
 // Remove todo
 function removeTodo(name) {
+  let ul = document.getElementById("ul");
   let todo = todoWithName(name);
-  todo.isDeleted = !todo.isDeleted;
+  let i = todos.indexOf(todo);
+  todos.splice(i, 1);
+  ul.innerHTML = "";
+  render();
 }
 // Todo name loop
 function todoWithName(name) {
