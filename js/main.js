@@ -8,7 +8,7 @@ class Todo {
 
 let todos = [];
 
-window.onload = () => {
+window.onload = function () {
   document.getElementById("addBtn").addEventListener("click", addTodo);
   document.getElementById("toDoInput").addEventListener("keyup", (event) => {
     if (event.key == 13 || event.keyCode == 13) {
