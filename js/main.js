@@ -6,7 +6,7 @@ class Todo {
   }
 }
 
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("todoItems")) || [];
 
 window.onload = function () {
   document.getElementById("addBtn").addEventListener("click", addTodo);
@@ -16,12 +16,6 @@ window.onload = function () {
     }
   });
   document.getElementById("sortBtn").addEventListener("click", sortTodo);
-
-  let clean = new Todo("Clean the house");
-  let wash = new Todo("Wash the car");
-
-  todos.push(clean);
-  todos.push(wash);
 
   render();
 };
@@ -36,6 +30,7 @@ function addTodo() {
     toDoInput.value = "";
     errorMsg.innerHTML = "";
     render();
+    saveToLS();
   }
   toDoInput.focus();
 }
@@ -82,6 +77,7 @@ function render() {
 function toggleCheckbox(name) {
   let todo = todoWithName(name);
   todo.isCompleted = !todo.isCompleted;
+  saveToLS();
 }
 // Remove todo
 function removeTodo(name) {
@@ -91,6 +87,7 @@ function removeTodo(name) {
   todos.splice(i, 1);
   ul.innerHTML = "";
   render();
+  saveToLS();
 }
 // Todo name loop
 function todoWithName(name) {
@@ -119,4 +116,9 @@ function sortTodo() {
     }
   });
   render();
+  saveToLS();
+}
+//Local storage
+function saveToLS() {
+  localStorage.setItem("todoItems", JSON.stringify(todos));
 }
