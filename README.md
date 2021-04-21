@@ -11,7 +11,7 @@ Use my existing knowledge in javascript to make a page that handles To-dos. The 
 Make a new folder:
 
 1. Run git clone https://github.com/MattSedmak/Todo_list.git in your termail.
-2. Run npm install if node_modules is not installed globally on your computer.
+2. Run npm install.
 3. Start index.html
 
 ## Naming conventions
