@@ -14,30 +14,4 @@ Make a new folder:
 2. Run npm install.
 3. Start index.html
 
-## Naming conventions
-
-### Variables
-
-- Use _let_ or _const_ instead of _var_.
-- When naming variables us camelCase Eg. let toDoInput = "name";
-
-### Functions
-
-- Do not use arrow functions, however annonymous arrow functions in eventlistener are acceptable.
-- Function names should use camelCase.
-
-### Classes
-
-- Class name show use PascalCase, ie they should always start with a captial letter. Eg. class Todo
-
-## Project Structure
-
-- Project folder/ - The root of the project. - Contains: index.html, gulpfile.js
-  - css folder/
-    - Css files here.
-  - scss folder/
-    - All scss sub-maps and files here.
-  - javascript folder/
-    - All js files here.
-  - dist folder/
-    - all files for distrubution here.
+<img width="400" alt="Skärmavbild 2021-04-26 kl  11 05 53" src="https://user-images.githubusercontent.com/62596608/116057787-6fb32180-a67f-11eb-8095-52dfff6e741b.png">
